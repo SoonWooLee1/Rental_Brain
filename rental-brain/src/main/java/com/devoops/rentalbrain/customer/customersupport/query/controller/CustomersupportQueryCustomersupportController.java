@@ -68,10 +68,4 @@ public class CustomersupportQueryCustomersupportController {
         return ResponseEntity.ok(queryService.getSupportKpi());
     }
 
-    @Operation(summary = "문의 등록")
-    @PostMapping
-    public ResponseEntity<Void> registerSupport(@RequestBody CustomersupportDTO newSupport) {
-        service.registSupport(newSupport);
-        return ResponseEntity.created(URI.create("/customersupports")).build();
-    }
 }

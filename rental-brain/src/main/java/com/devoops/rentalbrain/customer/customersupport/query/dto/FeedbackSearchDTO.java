@@ -6,7 +6,6 @@ import lombok.*;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class FeedbackSearchDTO extends Criteria {
-    private String keyword;
     private String status; // 'P' or 'C'
     private Integer category;
     private String sortBy;

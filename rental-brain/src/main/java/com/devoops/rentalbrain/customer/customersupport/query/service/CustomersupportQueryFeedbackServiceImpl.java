@@ -25,11 +25,10 @@ public class CustomersupportQueryFeedbackServiceImpl implements CustomersupportQ
         // 1. 전체 개수 조회
         int totalCount = feedbackMapper.countFeedbackList(searchDTO);
 
-        // 2. 페이징 버튼 정보 계산 (Static 메서드 사용)
+        // 2. 페이징 정보 계산 (static 메서드 사용)
         PagingButtonInfo pageInfo = Pagination.getPagingButtonInfo(searchDTO, totalCount);
 
-        // 3. 목록 조회
-        // MyBatis가 searchDTO.getOffset()을 자동으로 호출하므로 setOffset 불필요
+        // 3. 목록 조회 (searchDTO 안에 offset 정보가 자동으로 계산되어 있음)
         List<FeedbackDTO> list = feedbackMapper.selectFeedbackList(searchDTO);
 
         // 4. 결과 반환

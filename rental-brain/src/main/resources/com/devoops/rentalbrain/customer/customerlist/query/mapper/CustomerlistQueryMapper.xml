@@ -295,18 +295,21 @@
         ORDER BY Q.counseling_date DESC
     </select>
 
-    <select id="selectContractList" resultMap="ContractListMap">
+    <select id="selectContractList" parameterType="Long" resultType="com.devoops.rentalbrain.business.contract.query.dto.AllContractDTO">
         SELECT
-            id,
-            contract_code,
-            name AS conName,
-            status,
-            start_date,
-            contract_period,
-            monthly_payment
-        FROM contract
-        WHERE cum_id = #{customerId}
-        ORDER BY start_date DESC
+            C.id AS id,
+            C.contract_code AS contractCode,
+            C.name AS conName,
+            C.start_date AS startDate,
+            C.contract_period AS contractPeriod,
+            C.monthly_payment AS monthlyPayment,
+            C.status AS status
+        FROM
+            contract C
+        WHERE
+            C.cum_id = #{customerId}
+        ORDER BY
+            C.start_date DESC
     </select>
 
     <select id="selectAsList" resultMap="AsListMap">
